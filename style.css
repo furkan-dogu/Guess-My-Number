@@ -5,8 +5,8 @@
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
+body{
+  height: 97vh;
 }
 
 header {
@@ -142,16 +142,3 @@ main {
     padding: 10px;
   }
 }
-
-/* .number {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 180px;
-  padding: 25px;
-  background: #eee;
-  color: #333;
-  font-size: 60px;
-  text-align: center;
-  transform: translate(-50%, 50%);
-} */

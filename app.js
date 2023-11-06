@@ -1,6 +1,5 @@
 let random = Math.floor((Math.random() * 20) + 1)
 
-
 console.log(random);
 
 let body = document.querySelector("body")
@@ -16,11 +15,14 @@ document.querySelector(".top-score").textContent = topScore
 
 check.addEventListener("click", () => {
     const tahmin = input.value
+
     if(!tahmin) {
-        mesaj.textContent = "Lütfen bir sayı giriniz."
+        mesaj.textContent = "Please enter a number."
+    } else if(tahmin < 1 || tahmin > 20 || isNaN(tahmin)) {
+        mesaj.textContent = "You have entered an invalid number. Please enter a number between 1 and 20"
     } else if (tahmin == random) {
         body.style.backgroundColor = "green"
-        mesaj.textContent = "Tebrikler Bildiniz👏"
+        mesaj.textContent = "Congratulations 👏"
         number.textContent = random
 
         //?top score bölümü
@@ -31,14 +33,13 @@ check.addEventListener("click", () => {
             localStorage.setItem("top-score", topScore)
         }
 
-
     } else {
         if(score > 1) {
             score--
             scoreDOM.textContent = score
-            tahmin > random ? mesaj.textContent = "Azalt 👇" : mesaj.textContent = "Arttır 👆"
+            tahmin > random ? mesaj.textContent = "Reduce 👇" : mesaj.textContent = "Increase 👆"
         } else {
-            mesaj.textContent = "Oyunu kaybettiniz 😢"
+            mesaj.textContent = "You Lost 😢"
             scoreDOM.textContent = 0
             body.style.backgroundColor = "red"
             number.textContent = random
@@ -54,7 +55,7 @@ againButton.addEventListener("click", () => {
     input.value = ""
     score = 10
     scoreDOM.textContent = 10
-    mesaj.textContent = "Yeni Oyun Başlıyor..."
+    mesaj.textContent = "The New Game Begins..."
 })
 
 document.addEventListener("keydown", (event) => {
@@ -62,12 +63,3 @@ document.addEventListener("keydown", (event) => {
         check.click()
     }
 })
-
-check.addEventListener("click", () => {
-    let tahminSayi = input.value
-    if(tahminSayi < 1 || tahminSayi > 20) {
-        mesaj.textContent = "Geçersiz bir sayı girdiniz. Lütfen 1 ile 20 arasında bir sayı giriniz"
-        score++
-    }
-})
-
